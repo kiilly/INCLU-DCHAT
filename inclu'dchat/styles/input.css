@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#loginButton{
+    background-color: white;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 30px 30px 30px 30px;
+    height: 60px;
+    width: 200px;
+    display: flex;
+    justify-items: center;
+    text-align: center;
+}
+
+#loginButton span{
+    margin-top:7%;
+    color: #9b60cf;
+}
+@layer components {
+
+    .sidebar-icon {
+        @apply relative flex items-center justify-center
+        h-12 w-12 mt-12 mb-8  mx-auto shadow-lg
+        bg-gradient-to-r from-[#A46ED3] to-[#adb6fa] text-center rounded-3xl 
+        hover:rounded-xl hover:from-[#a46ed3c2] hover:to-[#adb6fad7]
+        transition-all duration-200;
+    }
+    .sidebar-tooltip {
+        @apply absolute w-auto p-2 m-2 min-w-max left-14
+        rounded-md shadow-md
+        text-white bg-gradient-to-r from-[#A46ED3]  to-[#a471d0ca]
+        text-xs font-bold
+        transition-all duration-100 scale-0 origin-left
+    }
+    .Drop-Button {
+        @apply absolute w-auto p-2 m-2 min-w-max left-14
+        rounded-md shadow-md
+        text-white bg-gradient-to-r from-[#FD9262] via-[#e31988] to-[#A371D0]
+        text-xs font-bold
+        transition-all duration-100 scale-0 origin-left
+    }
+    .inputSize{
+        @apply bg-[#f3f3f3] 
+        py-3 px-3 mt-[3%] rounded-xl
+        ml-5
+        w-[95%]
+        h-[30%]
+        self-center
+    }
+}
+#loginButton{
+    background-color: white;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 30px 30px 30px 30px;
+    height: 60px;
+    width: 200px;
+    display: flex;
+    justify-items: center;
+    text-align: center;
+}
+
+#loginButton span{
+    margin-top:7%;
+    color: #9b60cf;
+}
+.react-input-emoji--input {
+    background-color: #f3f3f3;
+    border: none;
+    outline: none;
+    border-color: #f3f3f3;
+}
+
+.react-input-emoji--container{
+    border: none;
+    background-color: #f3f3f3;
+}
+
+.boutton{
+    background-color: #a371D0;
+    color: white;
+}

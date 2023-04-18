@@ -1,0 +1,83 @@
+// Code Camp Web SDCDWEB
+//
+// Created on Thu Dec 15 2022
+// 
+// @authors: Menut Paul, Bouziane Nassim, Fom Nenkam Samuella, Hoarau Jordan, Boustani Abdelqodousse
+//
+// Copyright (c) 2022 - ETNA
+//
+
+
+// Generating a client for the prisma server.
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "./ERD.svg"
+}
+
+// Connecting to the database.
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// This is the schema of the events table.
+model events {
+  id         Int     @id @default(autoincrement())
+  title      String  @db.VarChar(50)
+  start      String  @default("0") @db.VarChar(50)
+  end        String  @default("0") @db.VarChar(50)
+  color      String  @db.VarChar(50)
+  content    String? @db.Text
+  z_index    Int?
+  created_by Int
+  belong_to  String  @default("") @db.VarChar(50)
+}
+
+// This is the schema of the group table.
+model groups {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(50)
+}
+
+// This is the schema of the label table.
+// although i think this one is deprecated and isn't used anymore
+model label {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(50)
+  color String @db.VarChar(50)
+}
+
+// This is the schema of the messages table.
+// Used in addition to sockets to bring persistency to the messages
+// allowing the best of both world instant and persitent chat 
+model messages {
+  id         Int     @id @default(autoincrement())
+  content    String  @db.Text
+  created_at String  @map("created at") @db.VarChar(50)
+  created_by String  @map("created by") @db.VarChar(50)
+  belongs_to String  @db.VarChar(50)
+  type       String? @db.VarChar(50)
+  bodyFile   String? @db.LongText
+}
+
+// This is the schema of the roles table.
+model roles {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(50)
+}
+
+// This is the schema of the used table.
+model users {
+  id       Int     @id @default(autoincrement())
+  username String  @db.VarChar(50)
+  email    String  @db.VarChar(50)
+  password String  @db.VarChar(100)
+  role_id  Int
+  group_id String? @db.Text
+
+  @@unique([email, username], map: "Index 2")
+}
